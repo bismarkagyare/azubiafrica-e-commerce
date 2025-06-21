@@ -16,9 +16,8 @@ const footerIcons = [
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary-blackish w-full mt-16">
-      {/* Orange divider */}
-      <div className="w-full h-1 bg-primary-orangeish mb-10" />
+    <footer className="bg-secondary-blackish w-full mt-10">
+      <div className="w-[170px] ml-27 md:ml-8 lg:ml-38 h-1 bg-primary-orangeish mb-10" />
 
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10 flex flex-col md:flex-row md:justify-between md:items-start gap-10 pb-10">
         <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
