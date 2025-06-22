@@ -29,6 +29,7 @@ const HeadphonesCategory = () => {
             desktop: xx99MarkII.categoryImage.desktop,
           }}
           category={xx99MarkII.category}
+          slug={xx99MarkII.slug}
           isNew={xx99MarkII.new}
         />
       )}
@@ -42,6 +43,7 @@ const HeadphonesCategory = () => {
             desktop: xx99MarkI.categoryImage.desktop,
           }}
           category={xx99MarkI.category}
+          slug={xx99MarkI.slug}
           isNew={xx99MarkI.new}
           reverse={true}
           withPadding={false}
@@ -57,11 +59,12 @@ const HeadphonesCategory = () => {
             desktop: xx59.categoryImage.desktop,
           }}
           category={xx59.category}
+          slug={xx59.slug}
           isNew={xx59.new}
           reverse={false}
         />
       )}
-      <CategorySection py="py-16"/>
+      <CategorySection py="py-16" />
       <StoreOverviewSection py="py-8" />
     </div>
   );

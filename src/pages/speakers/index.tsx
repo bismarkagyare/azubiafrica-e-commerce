@@ -29,6 +29,7 @@ const SpeakersCategory = () => {
           }}
           category={zx9.category}
           isNew={zx9.new}
+          slug={zx9.slug}
         />
       )}
       {zx7 && (
@@ -42,6 +43,7 @@ const SpeakersCategory = () => {
           }}
           category={zx7.category}
           reverse={true}
+          slug={zx7.slug}
         />
       )}
       <CategorySection py="py-16" />

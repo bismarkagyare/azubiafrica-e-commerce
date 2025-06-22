@@ -28,6 +28,7 @@ const EarphonesCategory = () => {
           }}
           category={yx1.category}
           isNew={yx1.new}
+          slug={yx1.slug}
         />
       )}
       <CategorySection py="py-16" />
