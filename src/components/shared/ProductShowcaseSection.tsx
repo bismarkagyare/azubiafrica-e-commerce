@@ -10,6 +10,7 @@ type ProductShowcaseSectionProps = {
     desktop: string;
   };
   category: string;
+  slug: string;
   isNew?: boolean;
   reverse?: boolean;
   buttonText?: string;
@@ -22,6 +23,7 @@ const ProductShowcaseSection: FC<ProductShowcaseSectionProps> = ({
   description,
   images,
   category,
+  slug,
   isNew = false,
   reverse = false,
   buttonText = "See Product",
@@ -37,19 +39,12 @@ const ProductShowcaseSection: FC<ProductShowcaseSectionProps> = ({
     <section
       className={`w-full flex justify-center items-center px-4 md:px-6 bg-transparent ${defaultPadding} ${className} ${withPadding}`}
     >
-      <div
-        className={`w-full max-w-6xl mx-auto overflow-hidden flex flex-col ${rowDir} items-center gap-10 md:gap-16`}
-      >
+      <div className={`w-full max-w-6xl mx-auto overflow-hidden flex flex-col ${rowDir} items-center gap-10 md:gap-16`}>
         <div className="flex-1 w-full rounded-xl overflow-hidden">
           <picture className="block w-full">
             <source media="(min-width:1024px)" srcSet={images.desktop} />
             <source media="(min-width:640px)" srcSet={images.tablet} />
-            <img
-              src={images.mobile}
-              alt={title}
-              className="w-full h-full object-cover rounded-xl"
-              draggable={false}
-            />
+            <img src={images.mobile} alt={title} className="w-full h-full object-cover rounded-xl" draggable={false} />
           </picture>
         </div>
 
@@ -63,7 +58,7 @@ const ProductShowcaseSection: FC<ProductShowcaseSectionProps> = ({
           <p className="text-neutral-500 text-base md:text-lg max-w-lg mb-4">{description}</p>
           <button
             className="bg-primary-orangeish hover:bg-primary-orangeish/80 text-white font-bold uppercase tracking-widest px-8 py-4 text-base rounded-none transition-colors duration-150 cursor-pointer"
-            onClick={() => navigate(`/${category}`)}
+            onClick={() => navigate(`/${category}/${slug}`)}
           >
             {buttonText}
           </button>
