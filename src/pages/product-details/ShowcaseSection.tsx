@@ -43,7 +43,7 @@ const ShowcaseSection: FC<ShowcaseSectionProps> = ({ title, description, images,
           <div className="flex flex-row gap-4 w-full max-w-xs sm:max-w-none sm:w-auto justify-center md:justify-start">
             <div className="flex items-center bg-neutral-100 overflow-hidden h-12 sm:h-14">
               <button
-                className="w-10 sm:w-12 h-full flex items-center justify-center text-neutral-400 text-xl sm:text-2xl font-bold hover:text-primary-orangeish transition-colors"
+                className="w-10 sm:w-12 h-full flex items-center justify-center text-neutral-400 text-xl sm:text-2xl font-bold hover:text-primary-orangeish transition-colors cursor-pointer"
                 onClick={handleDecrease}
                 aria-label="Decrease quantity"
                 type="button"
@@ -52,7 +52,7 @@ const ShowcaseSection: FC<ShowcaseSectionProps> = ({ title, description, images,
               </button>
               <span className="w-10 text-center text-base sm:text-lg font-semibold select-none">{quantity}</span>
               <button
-                className="w-10 sm:w-12 h-full flex items-center justify-center text-neutral-400 text-xl sm:text-2xl font-bold hover:text-primary-orangeish transition-colors"
+                className="w-10 sm:w-12 h-full flex items-center justify-center text-neutral-400 text-xl sm:text-2xl font-bold hover:text-primary-orangeish transition-colors cursor-pointer"
                 onClick={handleIncrease}
                 aria-label="Increase quantity"
                 type="button"
@@ -62,7 +62,7 @@ const ShowcaseSection: FC<ShowcaseSectionProps> = ({ title, description, images,
             </div>
 
             <button
-              className="flex-1 bg-primary-orangeish hover:bg-primary-orangeish/80 text-white font-bold uppercase tracking-widest
+              className="flex-1 bg-primary-orangeish hover:bg-primary-orangeish/80 text-white font-bold uppercase cursor-pointer tracking-widest
                         px-4 py-3 text-sm
                         sm:px-6 sm:py-3 sm:text-[12px]
                         md:px-8 md:py-4

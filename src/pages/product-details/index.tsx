@@ -30,7 +30,7 @@ const ProductDetails = () => {
       />
       <ProductInfo features={product.features} includes={product.includes} />
       <GallerySection gallery={product.gallery} />
-      <RelatedProducts others={product.others} category={product.category} />
+      <RelatedProducts others={product.others} />
       <CategorySection py="py-16" />
       <StoreOverviewSection py="py-8" />
     </div>
