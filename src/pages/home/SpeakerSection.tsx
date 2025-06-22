@@ -1,5 +1,6 @@
 import speakerImg from "@/assets/home/desktop/image-speaker-zx9.png";
 import patternCircles from "@/assets/home/desktop/pattern-circles.svg";
+import { Link } from "react-router-dom";
 
 const SpeakerSection = () => {
   return (
@@ -28,9 +29,12 @@ const SpeakerSection = () => {
           <p className="text-white text-base md:text-lg opacity-80 mb-8 max-w-md">
             Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
           </p>
-          <button className="bg-neutral-900 hover:bg-neutral-700 text-white font-bold uppercase tracking-widest px-8 py-4 text-base rounded-none transition-colors duration-150 cursor-pointer">
+          <Link
+            to="/speakers/zx9-speaker"
+            className="bg-neutral-900 hover:bg-neutral-700 text-white font-bold uppercase tracking-widest px-8 py-4 text-base rounded-none transition-colors duration-150 cursor-pointer"
+          >
             See Product
-          </button>
+          </Link>
         </div>
       </div>
     </section>

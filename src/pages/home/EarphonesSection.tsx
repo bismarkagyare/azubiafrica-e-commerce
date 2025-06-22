@@ -2,8 +2,11 @@ import speakerDesktopImg from "@/assets/home/desktop/image-speaker-zx7.jpg";
 import speakerMobileImg from "@/assets/home/mobile/image-speaker-zx7.jpg";
 import speakerTabletImg from "@/assets/home/tablet/image-speaker-zx7.jpg"
 import earphonesImg from "@/assets/home/desktop/image-earphones-yx1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const EarphonesSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-0 flex flex-col gap-8 md:gap-10">
       <div className="relative w-full rounded-xl overflow-hidden min-h-[320px] md:min-h-[360px] lg:min-h-[380px] flex items-center">
@@ -22,7 +25,10 @@ const EarphonesSection = () => {
           <h3 className="text-2xl md:text-3xl font-bold tracking-widest uppercase mb-6 text-neutral-900">
             ZX7 Speaker
           </h3>
-          <button className="border-2 border-neutral-900 text-neutral-900 font-bold uppercase tracking-widest px-8 py-3 text-base bg-transparent hover:bg-neutral-900 hover:text-white transition-colors duration-150 cursor-pointer">
+          <button
+            onClick={() => navigate("/speakers/zx7-speaker")}
+            className="border-2 border-neutral-900 text-neutral-900 font-bold uppercase tracking-widest px-8 py-3 text-base bg-transparent hover:bg-neutral-900 hover:text-white transition-colors duration-150 cursor-pointer"
+          >
             See Product
           </button>
         </div>
@@ -43,7 +49,10 @@ const EarphonesSection = () => {
             <h3 className="text-2xl md:text-3xl font-bold tracking-widest uppercase mb-6 text-neutral-900">
               YX1 Earphones
             </h3>
-            <button className="border-2 border-neutral-900 text-neutral-900 font-bold uppercase tracking-widest px-8 py-3 text-base bg-transparent hover:bg-neutral-900 hover:text-white transition-colors duration-150 cursor-pointer">
+            <button
+              onClick={() => navigate("/earphones/yx1-earphones")}
+              className="border-2 border-neutral-900 text-neutral-900 font-bold uppercase tracking-widest px-8 py-3 text-base bg-transparent hover:bg-neutral-900 hover:text-white transition-colors duration-150 cursor-pointer"
+            >
               See Product
             </button>
           </div>

@@ -1,6 +1,7 @@
 import heroBgDesktop from "@/assets/home/desktop/image-hero.jpg";
 import heroBgMobile from "@/assets/home/mobile/image-header.jpg";
 import heroBgTablet from "@/assets/home/tablet/image-header.jpg";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -27,12 +28,14 @@ const Hero = () => {
             Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
           </p>
 
-          <button className="bg-primary-orangeish hover:bg-primary-orangeish/80 text-white font-bold uppercase tracking-widest px-10 py-4 text-base rounded-none transition-colors duration-150 cursor-pointer">
+          <Link
+            to="/headphones/xx99-mark-two-headphones"
+            className="bg-primary-orangeish hover:bg-primary-orangeish/80 text-white font-bold uppercase tracking-widest px-10 py-4 text-base transition-colors duration-150 cursor-pointer"
+          >
             See Product
-          </button>
+          </Link>
         </div>
 
-        {/* spacer (desktop only) for centering img */}
         <div className="hidden lg:block flex-1" />
       </div>
     </section>
