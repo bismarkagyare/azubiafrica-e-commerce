@@ -7,12 +7,14 @@ import SpeakersCategory from "./pages/speakers";
 import EarphonesCategory from "./pages/earphones";
 import ProductDetails from "./pages/product-details";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ScrollToTop from "./utils/scrollToTop";
 
 function App() {
   const queryClient = new QueryClient();
 
   return (
     <Router>
+      <ScrollToTop />
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route element={<MainLayout />}>
