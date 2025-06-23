@@ -16,7 +16,7 @@ export type Product = {
   slug: string;
   name: string;
   price: number;
-  image: { mobile: string; tablet: string; desktop: string };
+  image: { mobile: string; tablet: string; desktop: string } | string;
 };
 
 interface CartContextType {
@@ -33,20 +33,18 @@ export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 const CART_STORAGE_KEY = "cartItems";
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  useEffect(() => {
+function getInitialCartItems(): CartItem[] {
+  try {
     const stored = localStorage.getItem(CART_STORAGE_KEY);
-    if (stored) {
-      try {
-        setCartItems(JSON.parse(stored));
-      } catch {
-        setCartItems([]);
-      }
-    }
-  }, []);
+    if (stored) return JSON.parse(stored);
+  } catch {
+    console.error("not existent");
+  }
+  return [];
+}
 
+export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const [cartItems, setCartItems] = useState<CartItem[]>(getInitialCartItems);
 
   useEffect(() => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
@@ -56,8 +54,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
+        // Update quantity for existing product
         return prev.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item));
       }
+      // Add new product
       return [
         ...prev,
         {
@@ -65,7 +65,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           slug: product.slug,
           name: product.name,
           price: product.price,
-          image: product.image.mobile, 
+          image: typeof product.image === "string" ? product.image : product.image.mobile,
           quantity,
         },
       ];
@@ -103,5 +103,3 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     </CartContext.Provider>
   );
 };
-
-
