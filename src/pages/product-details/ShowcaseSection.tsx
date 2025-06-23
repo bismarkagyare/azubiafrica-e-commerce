@@ -1,7 +1,11 @@
 import { useState } from "react";
 import type { FC } from "react";
+import { useCart } from "@/hooks/useCart";
+import { toast } from "react-toastify";
 
 type ShowcaseSectionProps = {
+  id: number;
+  slug: string;
   title: string;
   description: string;
   images: {
@@ -13,10 +17,26 @@ type ShowcaseSectionProps = {
   isNew?: boolean;
 };
 
-const ShowcaseSection: FC<ShowcaseSectionProps> = ({ title, description, images, price, isNew = false }) => {
+const ShowcaseSection: FC<ShowcaseSectionProps> = ({ id, slug, title, description, images, price, isNew = false }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+
   const handleDecrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
   const handleIncrease = () => setQuantity((q) => q + 1);
+
+  const handleAddToCart = () => {
+    addToCart(
+      {
+        id,
+        slug,
+        name: title,
+        price,
+        image: images,
+      },
+      quantity
+    );
+    toast.success("Added to cart", { position: "top-center" });
+  };
 
   return (
     <section className="w-full flex justify-center items-center px-4 md:px-6 py-10 md:py-16">
@@ -68,6 +88,7 @@ const ShowcaseSection: FC<ShowcaseSectionProps> = ({ title, description, images,
                         md:px-8 md:py-4
                         transition-colors duration-150 min-w-[120px] sm:min-w-[140px] md:min-w-[160px]"
               type="button"
+              onClick={handleAddToCart}
             >
               Add to Cart
             </button>
