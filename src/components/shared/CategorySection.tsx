@@ -6,8 +6,8 @@ import earphonesImg from "@/assets/shared/desktop/image-category-thumbnail-earph
 
 const categories = [
   { name: "Headphones", image: headphonesImg, alt: "Headphones", link: "/headphones" },
-  { name: "Speakers", image: speakersImg, alt: "Speakers", link: "/speakers" },
-  { name: "Earphones", image: earphonesImg, alt: "Earphones", link: "/earphones" },
+  { name: "Speakers",   image: speakersImg,  alt: "Speakers",   link: "/speakers"   },
+  { name: "Earphones",  image: earphonesImg, alt: "Earphones",  link: "/earphones"  },
 ];
 
 type CategoryCardProps = {
@@ -15,11 +15,13 @@ type CategoryCardProps = {
   image: string;
   alt: string;
   link: string;
+  onSelect?: () => void;
 };
 
-const CategoryCard = ({ name, image, alt, link }: CategoryCardProps) => (
+const CategoryCard = ({ name, image, alt, link, onSelect }: CategoryCardProps) => (
   <Link
     to={link}
+    onClick={onSelect}
     className="relative flex flex-col items-center bg-neutral-100 rounded-xl pt-16 pb-8 px-6 shadow-sm w-full max-w-xs mx-auto overflow-visible focus-visible:ring-2 focus-visible:ring-primary-orangeish/60 focus-visible:outline-none group"
   >
     <img
@@ -29,10 +31,8 @@ const CategoryCard = ({ name, image, alt, link }: CategoryCardProps) => (
       draggable={false}
       style={{ zIndex: 1 }}
     />
-
     <div className="h-12" />
     <h3 className="text-lg font-bold tracking-widest uppercase mb-4 text-neutral-900">{name}</h3>
-
     <div className="flex items-center gap-2">
       <span className="text-sm font-semibold tracking-widest text-neutral-500 group-hover:text-primary-orangeish transition-colors uppercase">
         Shop
@@ -42,14 +42,19 @@ const CategoryCard = ({ name, image, alt, link }: CategoryCardProps) => (
   </Link>
 );
 
-const CategoriesSection = ({ py = "py-32" }: { py?: string }) => (
-  <section className={`w-full bg-white ${py}`}>
-    <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row gap-16 md:gap-6 lg:gap-10 justify-center items-center">
-      {categories.map((cat) => (
-        <CategoryCard key={cat.name} {...cat} />
-      ))}
-    </div>
-  </section>
-);
+type SectionProps = {
+  py?: string;
+  onSelect?: () => void;
+};
 
-export default CategoriesSection;
+export default function CategoriesSection({ py = "py-32", onSelect }: SectionProps) {
+  return (
+    <section className={`w-full bg-white ${py}`}>
+      <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row gap-16 md:gap-6 lg:gap-10 justify-center items-center">
+        {categories.map((cat) => (
+          <CategoryCard key={cat.name} {...cat} onSelect={onSelect} />
+        ))}
+      </div>
+    </section>
+  );
+}
