@@ -1,8 +1,8 @@
-import { useForm } from "react-hook-form";
+/* eslint-disable react-refresh/only-export-components */
+import { useFormContext } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 
-const schema = z
+export const schema = z
   .object({
     name: z.string().min(1, "Field cannot be empty"),
     email: z.string().email("Must be a valid email"),
@@ -27,13 +27,7 @@ const schema = z
 export type FormValues = z.infer<typeof schema>;
 
 export default function CheckoutForm() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) });
-
+  const { register, watch, formState: { errors } } = useFormContext<FormValues>();
   const payment = watch("payment");
 
   const inputClasses = (field: keyof FormValues) =>
@@ -42,12 +36,7 @@ export default function CheckoutForm() {
     }`;
 
   return (
-    <form
-      onSubmit={handleSubmit((data) => {
-        console.log(data);
-      })}
-      className="grid gap-6"
-    >
+    <form className="grid gap-6">
       <h2 className="text-3xl font-bold">CHECKOUT</h2>
 
       {/* Billing Details */}

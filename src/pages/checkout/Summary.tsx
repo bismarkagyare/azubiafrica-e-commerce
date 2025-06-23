@@ -4,9 +4,10 @@ import { useFormContext } from "react-hook-form";
 
 type SummaryProps = {
   onPay: () => void;
+  isSubmitting?: boolean;
 };
 
-export default function Summary({ onPay }: SummaryProps) {
+export default function Summary({ onPay, isSubmitting = false }: SummaryProps) {
   const { cartItems, cartTotal } = useCart();
   const { formState } = useFormContext();
 
@@ -14,7 +15,7 @@ export default function Summary({ onPay }: SummaryProps) {
   const vat = cartTotal * TAX_RATE;
   const grand = cartTotal + shipping + vat;
 
-  const disabled = !formState.isValid || cartItems.length === 0;
+  const disabled = !formState.isValid || cartItems.length === 0 || isSubmitting;
 
   return (
     <div className="bg-white border rounded-xl p-6 flex-shrink-0 w-full max-w-md">
@@ -62,7 +63,7 @@ export default function Summary({ onPay }: SummaryProps) {
               : "bg-primary-orangeish hover:bg-primary-orangeish/80 text-white"
           }`}
       >
-        Continue &amp; Pay
+        {isSubmitting ? 'Processing...' : 'Continue & Pay'}
       </button>
     </div>
   );

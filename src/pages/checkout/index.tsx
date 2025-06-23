@@ -7,15 +7,33 @@ import Summary from "./Summary";
 import PaymentConfirmation from "./PaymentConfirmation";
 import { SHIPPING_FEE, TAX_RATE } from "@/constants/fees";
 import type { FormValues } from "./CheckoutForm";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { schema } from "./CheckoutForm";
 
 export default function CheckoutPage() {
-  const methods = useForm<FormValues>({ mode: "onChange" });
+  const methods = useForm<FormValues>({ 
+    mode: "onChange",
+    resolver: zodResolver(schema)
+  });
+  
   const [showConfirm, setShowConfirm] = useState(false);
   const { cartTotal, clearCart } = useCart();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const shipping = SHIPPING_FEE;
   const vat = cartTotal * TAX_RATE;
   const grand = cartTotal + shipping + vat;
+
+  const handleFormSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    try {
+      console.log(data)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setShowConfirm(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <FormProvider {...methods}>
@@ -46,7 +64,10 @@ export default function CheckoutPage() {
             <CheckoutForm />
           </div>
 
-          <Summary onPay={() => setShowConfirm(true)} />
+          <Summary 
+            onPay={methods.handleSubmit(handleFormSubmit)} 
+            isSubmitting={isSubmitting}
+          />
         </div>
       </div>
     </FormProvider>
