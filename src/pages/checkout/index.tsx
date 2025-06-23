@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
 import { useCart } from "@/hooks/useCart";
@@ -6,7 +7,6 @@ import Summary from "./Summary";
 import PaymentConfirmation from "./PaymentConfirmation";
 import { SHIPPING_FEE, TAX_RATE } from "@/constants/fees";
 import type { FormValues } from "./CheckoutForm";
-
 
 export default function CheckoutPage() {
   const methods = useForm<FormValues>({ mode: "onChange" });
@@ -19,6 +19,10 @@ export default function CheckoutPage() {
 
   return (
     <FormProvider {...methods}>
+      <Helmet>
+        <title>Audiophile Shop – Checkout</title>
+      </Helmet>
+
       {showConfirm && (
         <PaymentConfirmation
           grandTotal={grand}
