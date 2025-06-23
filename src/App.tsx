@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HelmetProvider } from "react-helmet-async";
 
 import MainLayout from "./layout";
 import Home from "./pages/home";
@@ -19,7 +18,6 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <HelmetProvider>
       <CartProvider>
         <Router>
           <ScrollToTop />
@@ -38,7 +36,6 @@ function App() {
         </Router>
         <ToastContainer />
       </CartProvider>
-    </HelmetProvider>
   );
 }
 

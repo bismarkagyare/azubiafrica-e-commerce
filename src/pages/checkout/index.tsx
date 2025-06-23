@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+/* eslint-disable react-refresh/only-export-components */
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
 import { useCart } from "@/hooks/useCart";
@@ -9,6 +9,10 @@ import { SHIPPING_FEE, TAX_RATE } from "@/constants/fees";
 import type { FormValues } from "./CheckoutForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "./CheckoutForm";
+
+export const metadata = {
+  title: "Audiophile Shop – Checkout",
+};
 
 export default function CheckoutPage() {
   const methods = useForm<FormValues>({ 
@@ -37,10 +41,6 @@ export default function CheckoutPage() {
 
   return (
     <FormProvider {...methods}>
-      <Helmet>
-        <title>Audiophile Shop – Checkout</title>
-      </Helmet>
-
       {showConfirm && (
         <PaymentConfirmation
           grandTotal={grand}

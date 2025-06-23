@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+/* eslint-disable react-refresh/only-export-components */
 import ProductShowcaseSkeleton from "@/components/loaders/Skeleton";
 import CategoryHeader from "@/components/shared/CategoryHeader";
 import CategorySection from "@/components/shared/CategorySection";
@@ -6,16 +6,16 @@ import ProductShowcaseSection from "@/components/shared/ProductShowcaseSection";
 import StoreOverviewSection from "@/components/shared/StoreOverviewSection";
 import { useProducts } from "@/hooks/useProductFetch";
 
+export const metadata = {
+  title: "Audiophile Shop – Earphones",
+};
+
 export default function EarphonesCategory() {
   const { data: products, isLoading } = useProducts();
   const yx1 = products?.find((p) => p.slug === "yx1-earphones");
 
   return (
     <>
-      <Helmet>
-        <title>Audiophile Shop – Earphones</title>
-      </Helmet>
-
       {isLoading ? (
         <ProductShowcaseSkeleton />
       ) : (
