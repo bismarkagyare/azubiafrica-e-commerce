@@ -27,6 +27,8 @@ const ProductDetails = () => {
         images={product.image}
         price={product.price}
         isNew={product.new}
+        slug={product.slug}
+        id={product.id}
       />
       <ProductInfo features={product.features} includes={product.includes} />
       <GallerySection gallery={product.gallery} />
