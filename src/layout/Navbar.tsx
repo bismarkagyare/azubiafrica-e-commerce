@@ -36,7 +36,7 @@ export default function Navbar() {
       {showCart && <CheckoutCard onClose={() => setShowCart(false)} />}
 
       <nav className="bg-secondary-blackish w-full relative z-40">
-        <div className="mx-auto w-full max-w-7xl h-20 px-6 md:px-10 flex items-center justify-between">
+        <div className="mx-auto w-full max-w-[1220px] h-20 px-6 md:px-10 flex items-center justify-between">
           <button
             aria-label="Toggle menu"
             className="lg:hidden md:hidden flex items-center cursor-pointer"

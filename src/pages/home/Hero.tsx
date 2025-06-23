@@ -16,7 +16,7 @@ const Hero = () => {
         />
       </picture>
 
-      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center lg:justify-start px-6 md:px-10 pt-20 md:pt-24 lg:pt-0 pb-16 min-h-[32rem]">
+      <div className="relative z-20 w-full max-w-[1220px] mx-auto flex flex-col lg:flex-row items-center lg:items-center lg:justify-start px-6 md:px-10 pt-20 md:pt-24 lg:pt-0 pb-16 min-h-[32rem]">
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
           <span className="text-sm tracking-[0.7em] text-neutral-400 mb-6 uppercase font-medium">New Product</span>
 

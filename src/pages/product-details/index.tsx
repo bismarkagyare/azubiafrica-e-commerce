@@ -8,6 +8,7 @@ import ProductShowcaseSkeleton from "@/components/loaders/Skeleton";
 import CategorySection from "@/components/shared/CategorySection";
 import StoreOverviewSection from "@/components/shared/StoreOverviewSection";
 import type { Product } from "@/types/product";
+import BackButton from "@/components/button/BackButton";
 
 const ProductDetails = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
@@ -21,6 +22,7 @@ const ProductDetails = () => {
 
   return (
     <div>
+      <BackButton className="lg:pl-48 pt-12"/>
       <ShowcaseSection
         title={product.name}
         description={product.description}
